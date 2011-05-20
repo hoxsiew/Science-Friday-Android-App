@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/switch_podcast"
+        android:title="Audio Podcasts"
+        android:icon="@drawable/audiocw" />
+
+    <item android:id="@+id/donate"
+        android:title="Donate"
+        android:icon="@drawable/donate" />
+    <item android:id="@+id/about"
+        android:title="About"
+        android:icon="@drawable/about" />
+</menu>

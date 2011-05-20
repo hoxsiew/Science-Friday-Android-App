@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, SciFriMain!</string>
+    <string name="VTitle">Science Friday -- Video Podcasts</string>
+    <string name="ATitle">Science Friday -- Audio Podcasts</string>
+    <string name="app_name">SciFri</string>
+    <string name="link_text_manual"><b>text2:</b> This is some other
+      text, with a <a href="http://www.google.com">link</a> specified
+      via an &lt;a&gt; tag.  Use a \"tel:\" URL
+      to <a href="tel:4155551212">dial a phone number</a>.
+    </string>
+    
+<string name="footer_text2">\nVisit us online at: <a href="http://www.sciencefriday.com">www.sciencefriday.com</a>\n\nScience Friday® is produced by ScienceFriday Inc.\nScience Friday® and SciFri® are registered service marks.\n\nVer. 0.10b developed for Science Friday by:\n<a href="http://droid.hoxnet.com">Hoxnet Software</a>\n</string>
+<string name="footer_text1">Visit us online at: <a href="http://www.sciencefriday.com">www.sciencefriday.com</a>\n\nScience Friday® is produced by ScienceFriday Inc.\nScience Friday® and SciFri® are registered service marks.\n\nVer. 0.10b developed for Science Friday by:\nHoxnet Software\n</string>
+<string name="footer_text">Visit us online at: <a href="http://www.sciencefriday.com">www.sciencefriday.com</a>\n\nScience Friday® is produced by ScienceFriday Inc.\nScience Friday® and SciFri® are registered service marks.\n\nVer. 0.10b</string>
+<string name="about">Why can\'t we see 96% of our universe? Why does our 
+body attack itself? What\'s the latest in nanotechnology? 
+How do I protect my privacy on the Internet?\n\nIf you\'re 
+curious about the secrets of nature, wonder
+why it\'s taking so long to cure diseases, what we can 
+do to live with climate change, or was if the future of 
+digital media, you\'ve come to the right place. At Science 
+Friday, we talk to inquiring minds looking for answers.\n\nEach
+week on NPR, Science Friday and it\'s host Ira Flatow 
+bring you the latest news about science, health, space, 
+technology and the environment. Our experts are on the 
+cutting edge, but we never talk down to you. You\'re sure to 
+enjoy our podcasts (check out our Video App, too.)\n\nSo 
+head over to <a href="http://www.sciencefriday.com">www.sciencefriday.com</a> to check out our 
+website, tune in to the live broadcast of SciFri each 
+Friday afternoon at 2-4pm ET and subscribe to our podcasts.\n\nJoin 
+other interesting folks at our Facebook page: <a href="http://www.facebook.com/scifri">http://www.facebook.com/scifri</a>\n\nTwitter:
+<a href="http://twitter.com/scifri">\@scifri</a>\n\nSee ya!\n\nIra\n\n
+</string>
+</resources>

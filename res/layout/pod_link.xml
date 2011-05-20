@@ -1,0 +1,35 @@
+<RelativeLayout android:id="@+id/RelativeLayout01"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="wrap_content" android:layout_width="fill_parent">
+	<ImageView android:id="@+id/ImageView01"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_centerVertical="true" android:layout_marginLeft="10px"
+		android:layout_marginRight="10px" android:src="@drawable/scifri_star">
+	</ImageView>
+	<LinearLayout android:id="@+id/LinearLayout01"
+		android:layout_height="wrap_content" android:orientation="vertical"
+		android:layout_toRightOf="@+id/ImageView01" android:layout_width="fill_parent">
+		<TextView android:text="@+id/TextView01" android:id="@+id/TextView01"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:textSize="18sp" android:textColor="#1f547e">
+		</TextView>
+		<LinearLayout android:id="@+id/LinearLayout02"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+			<ImageView android:id="@+id/ImageView02"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:src="@drawable/audiocw" android:scaleType="centerInside"
+				android:adjustViewBounds="true" android:maxHeight="15dp"
+				android:maxWidth="30dp">
+			</ImageView>
+			<TextView android:text="@+id/TextView02" android:id="@+id/TextView02"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:textColor="#818181" android:textSize="12sp">
+			</TextView>
+			<TextView android:text="@+id/TextView03" android:id="@+id/TextView03"
+				android:layout_height="wrap_content" android:layout_width="fill_parent"
+				android:textColor="#818181" android:textSize="12sp"
+				android:layout_marginLeft="10dp">
+			</TextView>
+		</LinearLayout>
+	</LinearLayout>
+</RelativeLayout>
