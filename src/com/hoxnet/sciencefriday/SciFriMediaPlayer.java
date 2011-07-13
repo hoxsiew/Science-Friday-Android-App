@@ -43,6 +43,7 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -100,6 +101,9 @@ public class SciFriMediaPlayer extends Activity implements
     setContentView(R.layout.player_1);
     mPreview = (SurfaceView) findViewById(R.id.SurfaceView01);
     mFrameLayout=(FrameLayout) findViewById(R.id.FrameLayout01);
+    //allow us to hide/restore status bar
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     
     //mPreview = new SurfaceView(getBaseContext());//
     holder = mPreview.getHolder();
@@ -108,7 +112,8 @@ public class SciFriMediaPlayer extends Activity implements
     mFrameLayout.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         mTick=0;
-        DimableControls.setVisibility(View.VISIBLE);        
+        DimableControls.setVisibility(View.VISIBLE);   
+        showStatusBar();
      }
     });
     holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -176,6 +181,7 @@ public class SciFriMediaPlayer extends Activity implements
             if(mTick>=8){ //4 seconds
               mTick=0;
               DimableControls.setVisibility(View.INVISIBLE);
+              hideStatusBar();
             }
           }
           break;
@@ -466,6 +472,16 @@ public class SciFriMediaPlayer extends Activity implements
     }
     return s;
   }
+  private void hideStatusBar() {
+    WindowManager.LayoutParams attrs = getWindow().getAttributes();
+    attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+    getWindow().setAttributes(attrs);
+  }
 
+  private void showStatusBar() {
+    WindowManager.LayoutParams attrs = getWindow().getAttributes();
+    attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+    getWindow().setAttributes(attrs);
+  }
   
 }

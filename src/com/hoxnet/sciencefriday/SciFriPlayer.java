@@ -304,9 +304,9 @@ public class SciFriPlayer extends Activity{
               if(a==0){
                 return;
               }
-              int b=mSecondaryService.getCurrentPosition();
-              int pct=(b*100)/a;
-              prog.setProgress(pct);       
+              //int b=mSecondaryService.getCurrentPosition();
+              //int pct=(b*100)/a;
+              //prog.setProgress(pct);       
               int where=(int)((float)a*((float)progress/100.0f));
               mSecondaryService.SeekTo(where);
             }
