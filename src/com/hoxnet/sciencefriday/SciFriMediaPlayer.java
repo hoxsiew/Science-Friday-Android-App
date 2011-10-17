@@ -60,6 +60,7 @@ public class SciFriMediaPlayer extends Activity implements
   private static final String TAG = "SciFriMediaPlayer";
   private static final int TMRMSG=1002;
   private static final int DIMMSG=1003;
+  private static final int MSG_DONE=1004;  
   private int mVideoWidth;
   private int mVideoHeight;
   private MediaPlayer mMediaPlayer=null;
@@ -164,6 +165,9 @@ public class SciFriMediaPlayer extends Activity implements
   Handler myViewUpdateHandler = new Handler() {
     public void handleMessage(Message msg) {
       switch (msg.what) {
+        case MSG_DONE:
+          finish();
+          break;
         case TMRMSG:
           if(prog!=null&&mMediaPlayer!=null){
             int a=mMediaPlayer.getDuration();
@@ -191,7 +195,7 @@ public class SciFriMediaPlayer extends Activity implements
   };
   
   class secondCountDownRunner implements Runnable {
-    // send a message every 2 seconds to update the actual progress 
+    // send a message every 0.5 seconds to update the actual progress 
     // of the media player.
     public void run() {
       while (!Thread.currentThread().isInterrupted()) {
@@ -346,9 +350,24 @@ public class SciFriMediaPlayer extends Activity implements
     if(mWakeLock.isHeld()){
       mWakeLock.release();
     }
-    finish();
+    
+    Thread myFinishThread = new Thread(new CountDownToFinish());
+    myFinishThread.start();
+    
+    //finish();
   }
-
+  class CountDownToFinish implements Runnable {
+    // wait 5 seconds to show credits, then send message to finish
+    public void run() {
+        try {
+          Thread.sleep(5000);
+        } catch (InterruptedException e) {
+          Log.d(TAG, "error: " + e.getMessage(), e);
+          Thread.currentThread().interrupt();
+        }
+        myViewUpdateHandler.obtainMessage(MSG_DONE).sendToTarget();
+    }
+  } 
   public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
     Log.v(TAG, "onVideoSizeChanged called");
     if (width == 0 || height == 0) {

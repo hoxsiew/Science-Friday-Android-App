@@ -31,6 +31,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo.State;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -58,14 +59,9 @@ public class SciFriMain extends Activity{
   private ListView mListView;
   private ArrayList<PodCastItem> mPodCastItems;
   private boolean isAudio=true;
-  //private static String AudioURL="http://www.npr.org/rss/podcast.php?id=510221";
-  //private static String AudioURL="http://www.sciencefriday.com/audio/scifriaudio-segs.xml";
   private static String AudioURL="http://www.sciencefriday.com/audio/scifriaudio.xml";
-  public int mNetworkStatus=0;
-  
+  public int mNetworkStatus=0;  
   private static final String TAG = "SciFriMediaPlayer";
-  //car talk? 
-  //private static String AudioURL="http://www.npr.org/rss/podcast.php?id=510208";
   private static String VideoURL="http://www.sciencefriday.com/video/scifrivideo.xml";
   private boolean mIsRelease=false;
   private TextView mTitleBar;
@@ -765,18 +761,17 @@ public class SciFriMain extends Activity{
     final android.net.NetworkInfo wifi=connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
     final android.net.NetworkInfo mobile=connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
     if(wifi.isAvailable()){
-      return 2;
-      //Toast.makeText(this,"Wifi",Toast.LENGTH_LONG).show();
-    }else if(mobile.isAvailable()){
-      return 1;
-      //Toast.makeText(this,"Mobile 3G ",Toast.LENGTH_LONG).show();
-    }else{
-      return 0;
-      //Toast.makeText(this,"No Network ",Toast.LENGTH_LONG).show();
+      if(wifi.getState()==State.CONNECTED){
+        return 2;
+      }
     }
+    if(mobile.isAvailable()){
+      if(mobile.getState()==State.CONNECTED){
+        return 1;
+      }
+    }
+    return 0;
   }
-
-
 
 }
 

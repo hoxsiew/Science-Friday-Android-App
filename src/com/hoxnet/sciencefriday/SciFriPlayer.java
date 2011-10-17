@@ -159,7 +159,7 @@ public class SciFriPlayer extends Activity{
           break;
         case TMRMSG:    
           //timer tick (every 500 ms)
-          if(isPlaying){
+          if(isPlaying&&!isPaused){
             try{
               int a=mSecondaryService.getDuration();
               if(a==0){
@@ -194,6 +194,7 @@ public class SciFriPlayer extends Activity{
           }catch(Exception e){
             e.printStackTrace();
           }
+          //Intent i=new Intent();
           finish();
 //          isPlaying=false;
 //          prog.setProgress(0);
@@ -214,9 +215,16 @@ public class SciFriPlayer extends Activity{
           //pause or resume based on phone state
           if(msg.arg1==0){
             isPaused=false;
+            //myRefreshThread.notify();
             playButton.setImageResource(R.drawable.button_pause);
           }else{
             isPaused=true;
+//            try{
+//              myRefreshThread.wait();
+//            }catch(InterruptedException e){
+//              // TODO Auto-generated catch block
+//              e.printStackTrace();
+//            }
             playButton.setImageResource(R.drawable.button_play);
           }
           break;
@@ -315,6 +323,7 @@ public class SciFriPlayer extends Activity{
           }
         }
       }
+      
       @Override
       public void onStartTrackingTouch(SeekBar seekBar) {
         //mTracking=true;
